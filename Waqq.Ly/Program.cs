@@ -8,8 +8,6 @@ namespace Waqq.Ly
 
             // Add services to the container.
 
-
-
             builder.Services.AddDistributedMemoryCache();
 
             builder.Services.AddSession(options =>

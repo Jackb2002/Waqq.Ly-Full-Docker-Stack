@@ -1,0 +1,19 @@
+﻿@page
+@model Waqq.Ly.Pages.NearbyWalkersModel
+@{
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1>Nearby Walkers</h1>
+            <p>Here are the walkers near you:</p>
+            <ul>
+                @foreach (var walker in Model.Walkers)
+                {
+                    <li>@walker</li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>

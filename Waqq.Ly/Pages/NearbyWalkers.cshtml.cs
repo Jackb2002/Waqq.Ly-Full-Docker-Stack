@@ -1,19 +1,15 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Newtonsoft.Json;
-using System;
-using System.Net.Http.Headers;
 using System.Text;
 using Waqq.Ly.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Waqq.Ly.Pages
 {
-    public class ProfileModel : PageModel
+    public class NearbyWalkersModel : PageModel
     {
-
-        public async void OnGet()
+        public List<string> Walkers = new List<string>();
+        public void OnGet()
         {
             if(HttpContext.Session.GetInt32("logged_in") != 1)
             {
@@ -51,13 +47,8 @@ namespace Waqq.Ly.Pages
                     else
                     {
                         string[] lines = data.Split("\n");
-                        ViewData["Username"] = lines[0].Split(":")[1];
-                        ViewData["Email"] = lines[1].Split(":")[1];
-                        ViewData["Name"] = lines[2].Split(":")[1];
-                        ViewData["Phone"] = lines[3].Split(":")[1];
-                        ViewData["Age"] = lines[4].Split(":")[1];
-                        ViewData["Walker"] = lines[5].Split(":")[1];
-                        ViewData["Location"] = lines[6].Split(":")[1];
+                        string location = lines[6].Split(":")[1];
+                        GetWalkers(api, client, out _, out _, out _, location);
                     }
                 }
                 else
@@ -73,6 +64,25 @@ namespace Waqq.Ly.Pages
                     }
                     Redirect("/Login");
                 }
+            }
+        }
+
+        private void GetWalkers(string api, HttpClient client, out string url, out StringContent content, out HttpResponseMessage response, string location)
+        {
+            WalkersRequest walkersRequest = new WalkersRequest()
+            {
+                Location = location
+            };
+            content = new StringContent(JsonConvert.SerializeObject(walkersRequest), Encoding.UTF8, "application/json");
+            url = api + "/NearbyWalkers";
+            response = client.PostAsync(url, content).Result;
+            if (response.IsSuccessStatusCode)
+            {
+                Walkers = response.Content.ReadAsStringAsync().Result.Split("\n").ToList();
+            }
+            else
+            {
+                Walkers.Append("No walkers found");
             }
         }
     }

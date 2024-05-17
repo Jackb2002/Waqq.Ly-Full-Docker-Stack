@@ -9,7 +9,7 @@ namespace Waqq.Ly.Pages
 {
     public class RegisterModel : PageModel
     {
-        public async Task<IActionResult> OnPostAsync(string username, string password, string name, string email, string phone, int age, bool walker)
+        public async Task<IActionResult> OnPostAsync(string username, string password, string name, string email, string phone, int age, bool walker, string location)
         {
             // Validate form data (optional)
             // You can add validation logic here before sending the request
@@ -23,13 +23,14 @@ namespace Waqq.Ly.Pages
                 Email = email,
                 Phone = phone,
                 Age = age,
-                Walker = walker
+                Walker = walker,
+                Location = location
             };
 
             // Send data to the API using HttpClient (assuming you have using statements for System.Net.Http)
             using (var client = new HttpClient())
             {
-                string baseUrl = "http://api:8070"; // Replace with your actual API base URL
+                string baseUrl = API.access_address; // Replace with your actual API base URL
                 string url = $"{baseUrl}/Register";
 
                 var content = new StringContent(JsonConvert.SerializeObject(registerData), Encoding.UTF8, "application/json");

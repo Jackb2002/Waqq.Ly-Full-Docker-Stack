@@ -10,6 +10,7 @@
         public string Phone { get; set; }
         public int Age { get; set; }
         public bool Walker { get; set; }
+        public string Location { get; set; }
         public string AuthCookie { get; set; }
         public DateTime CookieTimeout { get; set; }
     }

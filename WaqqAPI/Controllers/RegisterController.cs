@@ -42,7 +42,8 @@ namespace WaqqAPI.Controllers
                 Age = registerData.Age,
                 Walker = registerData.Walker,
                 AuthToken = "",
-                CookieTimeout = DateTime.Now
+                CookieTimeout = DateTime.Now,
+                Location = registerData.Location
             };
 
             await _userService.CreateAsync(newUser);

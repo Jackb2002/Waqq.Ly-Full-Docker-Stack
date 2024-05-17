@@ -36,7 +36,7 @@ namespace Waqq.Ly.Pages
             // Send data to the API using HttpClient (assuming you have using statements for System.Net.Http)
             using (var client = new HttpClient())
             {
-                string baseUrl = "http://api:8070"; 
+                string baseUrl = API.access_address; 
                 string url = $"{baseUrl}/Login";
 
                 var content = new StringContent(JsonConvert.SerializeObject(loginData), Encoding.UTF8, "application/json");
