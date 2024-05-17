@@ -1,0 +1,51 @@
+﻿@page
+@model Waqq.Ly.Pages.ProfileModel
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>My Profile</h1>
+    <div class="profile-container">
+        <img src="profile-picture.jpg" alt="Profile Picture"> <div class="profile-info">
+            <ul>
+                <li>
+                    <span class="label">Username:</span>
+                    <span class="value">@ViewData["Username"]</span>
+                </li>
+                <li>
+                    <span class="label">Email:</span>
+                    <span class="value">@ViewData["Email"]</span>
+                </li>
+                <li>
+                    <span class="label">Name:</span>
+                    <span class="value">@ViewData["Name"]</span>
+                </li>
+                <li>
+                    <span class="label">Phone:</span>
+                    <span class="value">@ViewData["Phone"]</span>
+                </li>
+                <li>
+                    <span class="label">Age:</span>
+                    <span class="value">@ViewData["Age"]</span>
+                </li>
+                <li>
+                    <span class="label">Walker:</span>
+                    <span class="value">@ViewData["Walker"]</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
