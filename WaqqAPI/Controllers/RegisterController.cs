@@ -31,7 +31,6 @@ namespace WaqqAPI.Controllers
             // You'll need to implement database logic to persist this data
 
             _logger.LogInformation($"User register query: {registerData.Username}");
-
             var newUser = new User
             {
                 Username = registerData.Username,

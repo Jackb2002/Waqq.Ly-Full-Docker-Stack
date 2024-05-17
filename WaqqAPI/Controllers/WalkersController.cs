@@ -25,11 +25,12 @@ namespace WaqqAPI.Controllers
             {
                 var location = walkersRequest.Location;
                 List<string> ValidWalkers = new List<string>();
-
+                _logger.LogInformation("Looking for valid walkers in " + location);
                 var users = await _userService.GetAsync();
+                _logger.LogInformation("Checking " + users.Count + " users");
                 foreach (var user in users)
                 {
-                    if (user.Location.ToLower().Trim() == location.ToLower().Trim() && user.Walker)
+                    if (user.Location.ToLower().Trim() == location.ToLower().Trim() && user.Walker == "Yes")
                     {
                         ValidWalkers.Add($"{user.Name} - {user.Phone}");
                     }

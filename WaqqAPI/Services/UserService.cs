@@ -32,7 +32,6 @@ namespace WaqqAPI.Services
 
         internal async void RenewTokenAsync(User userIn)
         {
-            userIn.AuthToken = Guid.NewGuid().ToString();
             userIn.CookieTimeout = DateTime.Now.AddMinutes(30);
             await UpdateAsync(userIn.Id.ToString(), userIn);
         }

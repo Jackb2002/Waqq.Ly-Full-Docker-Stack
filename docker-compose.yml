@@ -22,8 +22,8 @@ services:
       - custom_network  # Attach API to the custom network
   mongo:
     image: mongo:latest  # Use the latest MongoDB image
-    #ports:
-      #- "27017:27017"  # Map Host Port 27017 to MongoDB Container Port 27017
+    ports:
+      - "27017:27017"  # Map Host Port 27017 to MongoDB Container Port 27017
     networks:
       - custom_network  # Attach MongoDB to the custom network
 

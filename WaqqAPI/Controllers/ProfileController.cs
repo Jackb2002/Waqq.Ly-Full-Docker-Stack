@@ -43,7 +43,7 @@ namespace WaqqAPI.Controllers
             sb.AppendLine("Name: " + user.Name);
             sb.AppendLine("Phone Number:" + user.Phone);
             sb.AppendLine("Age:" + user.Age);
-            sb.AppendLine("Walker: " + (user.Walker ? "Yes":"No"));
+            sb.AppendLine("Walker:" + user.Walker);
             sb.AppendLine("Location:" + user.Location);
             return Ok(sb.ToString());
         }

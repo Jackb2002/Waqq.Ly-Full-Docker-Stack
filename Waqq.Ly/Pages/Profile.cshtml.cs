@@ -86,7 +86,7 @@ namespace Waqq.Ly.Pages
             };
             using (HttpClient client = new HttpClient())
             {
-                string url = API.access_address + "/NearbyWalkers";
+                string url = API.access_address + "/Walkers";
                 var content = new StringContent(JsonConvert.SerializeObject(walkersRequest), Encoding.UTF8, "application/json");
                 var response = client.PostAsync(url, content).Result;
 

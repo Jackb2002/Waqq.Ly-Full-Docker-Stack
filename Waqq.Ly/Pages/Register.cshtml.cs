@@ -9,11 +9,8 @@ namespace Waqq.Ly.Pages
 {
     public class RegisterModel : PageModel
     {
-        public async Task<IActionResult> OnPostAsync(string username, string password, string name, string email, string phone, int age, bool walker, string location)
+        public async Task<IActionResult> OnPostAsync(string username, string password, string name, string email, string phone, int age, string location, string walker)
         {
-            // Validate form data (optional)
-            // You can add validation logic here before sending the request
-
             // Create a Register object from form data
             Register registerData = new Register()
             {
@@ -23,7 +20,7 @@ namespace Waqq.Ly.Pages
                 Email = email,
                 Phone = phone,
                 Age = age,
-                Walker = walker,
+                Walker = walker == "on" ? "Yes" : "No",
                 Location = location
             };
 

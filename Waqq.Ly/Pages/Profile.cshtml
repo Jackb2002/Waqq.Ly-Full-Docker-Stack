@@ -15,7 +15,7 @@
 <body>
     <h1>My Profile</h1>
     <div class="profile-container">
-        <img src="profile-picture.jpg" alt="Profile Picture"> <div class="profile-info">
+       
             <ul>
                 <li>
                     <span class="label">Username:</span>
@@ -47,7 +47,9 @@
                 </li>
                 <li>
                     <span class="label">Nearby Walkers:</span>
-                    <span class="value">@ViewData["Walkers"]</span>
+                    <ul>
+                        <li><span class="value">@ViewData["Walkers"]</span></li>
+                    </ul>
                 </li>
             </ul>
         </div>
