@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Text;
+using WaqqAPI.RequestModels;
 using WaqqAPI.Services;
 
 namespace WaqqAPI.Controllers
 {
+    [ApiController]
+    [Route("[controller]")]
     public class WalkersController : ControllerBase
     {
         private readonly ILogger<LoginController> _logger;
@@ -26,7 +29,7 @@ namespace WaqqAPI.Controllers
                 var users = await _userService.GetAsync();
                 foreach (var user in users)
                 {
-                    if (user.Location.ToLower().Trim() == location.ToLower().Trim())
+                    if (user.Location.ToLower().Trim() == location.ToLower().Trim() && user.Walker)
                     {
                         ValidWalkers.Add($"{user.Name} - {user.Phone}");
                     }

@@ -16,8 +16,8 @@ services:
       dockerfile: ./WaqqAPI/Dockerfile  # Specify the path to the Dockerfile for the API
     #Expose if development build
 
-    #ports:
-      #- "8070:8070"  # Map Host Port 8070 to API Container Port 8080
+    ports:
+      - "8070:8070"  # Map Host Port 8070 to API Container Port 8080
     networks:
       - custom_network  # Attach API to the custom network
   mongo:

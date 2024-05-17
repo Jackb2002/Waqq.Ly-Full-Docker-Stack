@@ -12,10 +12,10 @@ namespace Waqq.Ly.Pages
 {
     public class ProfileModel : PageModel
     {
-
+        string location;
         public async void OnGet()
         {
-            if(HttpContext.Session.GetInt32("logged_in") != 1)
+            if (HttpContext.Session.GetInt32("logged_in") != 1)
             {
                 Redirect("/Login");
             }
@@ -58,6 +58,8 @@ namespace Waqq.Ly.Pages
                         ViewData["Age"] = lines[4].Split(":")[1];
                         ViewData["Walker"] = lines[5].Split(":")[1];
                         ViewData["Location"] = lines[6].Split(":")[1];
+                        location = lines[6].Split(":")[1];
+                        GetNearbyWalkers();
                     }
                 }
                 else
@@ -67,11 +69,31 @@ namespace Waqq.Ly.Pages
                         HttpContext.Session.Remove("session");
                         HttpContext.Session.Remove("logged_in");
                     }
-                    catch 
+                    catch
                     {
                         Redirect("/Index");
                     }
                     Redirect("/Login");
+                }
+            }
+        }
+
+        private void GetNearbyWalkers()
+        {
+            WalkersRequest walkersRequest = new WalkersRequest()
+            {
+                Location = location
+            };
+            using (HttpClient client = new HttpClient())
+            {
+                string url = API.access_address + "/NearbyWalkers";
+                var content = new StringContent(JsonConvert.SerializeObject(walkersRequest), Encoding.UTF8, "application/json");
+                var response = client.PostAsync(url, content).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string data = response.Content.ReadAsStringAsync().Result;
+                    ViewData["Walkers"] = data;
                 }
             }
         }

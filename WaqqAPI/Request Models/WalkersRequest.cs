@@ -1,4 +1,4 @@
-﻿namespace WaqqAPI.Controllers
+﻿namespace WaqqAPI.RequestModels
 {
     public class WalkersRequest
     {
