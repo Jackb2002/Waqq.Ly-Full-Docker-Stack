@@ -1,4 +1,4 @@
-#See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
+# See https://aka.ms/customizecontainer to learn how to customize your debug container and how Visual Studio uses this Dockerfile to build your images for faster debugging.
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 USER app
@@ -11,10 +11,10 @@ ENV ASPNETCORE_ENVIRONMENT Deployment
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Waqq.Ly/Waqq.Ly.csproj", "Waqq.Ly/"]
-RUN dotnet restore "./Waqq.Ly/Waqq.Ly.csproj"
+COPY ["Waqq.Ly.csproj", "."]
+RUN dotnet restore "./Waqq.Ly.csproj"
 COPY . .
-WORKDIR "/src/Waqq.Ly"
+WORKDIR "/src"
 RUN dotnet build "./Waqq.Ly.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 FROM build AS publish
