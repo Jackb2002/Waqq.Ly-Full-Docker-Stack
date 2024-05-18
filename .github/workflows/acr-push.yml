@@ -2,7 +2,6 @@ name: Build and Push to ACR
 
 on:
   push:
-    branches: [ main ]  # Only runs on pushes to the main branch
 
 jobs:
   build-and-push:
