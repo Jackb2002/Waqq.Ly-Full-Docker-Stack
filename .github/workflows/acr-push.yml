@@ -14,14 +14,16 @@ jobs:
         run: |
           az acr login --name ${{ secrets.AZURE_ACR_NAME }}
 
-      - name: Build and push image for waqqapi 
+      - name: Build and push image for WaqqAPI
         uses: docker/build-push-action@v3  # Action for building and pushing
         with:
           push: true
-          tags: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}/waqqapi:latest  # Tag with ACR server and version
+          tags: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}/waqqapi:latest
+          context: ./WaqqAPI  # Build context set to WaqqAPI directory
 
-      - name: Build and push image for waqqly 
+      - name: Build and push image for Waqqly
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}/waqqly:latest
+          context: ./Waqq.Ly  # Build context set to Waqq.Ly directory
