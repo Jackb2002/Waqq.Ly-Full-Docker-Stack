@@ -65,12 +65,4 @@ To run the application in environments other than Azure, you may need to adjust 
 - **API Connection String**: Update the API connection string in the `appsettings.json` file.
 - **MongoDB Connection String**: Update the MongoDB connection string in the `appsettings.json` file.
 
-## Project Structure
-github/
-├── WaqqLyAPI/
-│ ├── WebApp/ # ASP.NET Core WebApp with Razor Pages
-│ ├── API/ # API project
-│ └── Dockerfile # Dockerfile for WebApp and API
-├── docker-compose.yml # Docker Compose file
-└── README.md # Project README
 
