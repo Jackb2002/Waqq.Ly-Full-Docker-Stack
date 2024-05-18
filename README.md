@@ -52,15 +52,10 @@ This project is a web application built using ASP.NET Core with Razor Pages. It 
 
 The application is set up for automatic deployment to Azure. You can use the following steps to configure Azure deployment:
 
-1. Login to Azure:
-    ```bash
-    az login
-    ```
+1. Deploy to Azure:
+    The project uses GitHub Actions for CI/CD. Ensure your repository is connected to your Azure account and the pipeline is configured correctly.
 
-2. Deploy to Azure:
-    The project uses Azure DevOps pipelines or GitHub Actions for CI/CD. Ensure your repository is connected to your Azure account and the pipeline is configured correctly.
-
-3. Access the Deployed WebApp:
+2. Access the Deployed WebApp:
     An example web application is available at [https://waqqlyjb02.azurewebsites.net/](https://waqqlyjb02.azurewebsites.net/)
 
 ## Configuration
