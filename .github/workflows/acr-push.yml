@@ -8,10 +8,9 @@ jobs:
     runs-on: ubuntu-latest  # Or another supported runner
     steps:
       - uses: actions/checkout@v3  # Checkout code from GitHub
-
       - name: Login to Azure ACR
         run: |
-          az acr login --name ${{ secrets.AZURE_ACR_NAME }}
+          az acr login --name ${{ secrets.AZURE_ACR_NAME }} --username ${{ secrets.AZURE_ACR_USERNAME }} --password ${{ secrets.AZURE_ACR_PASSWORD }}
 
       - name: Build and push image for WaqqAPI
         uses: docker/build-push-action@v3  # Action for building and pushing
