@@ -17,11 +17,9 @@ jobs:
         with:
           push: true
           tags: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}/waqqapi:latest
-          context: ./WaqqAPI  # Build context set to WaqqAPI directory
 
       - name: Build and push image for Waqqly
         uses: docker/build-push-action@v3
         with:
           push: true
           tags: ${{ secrets.AZURE_ACR_LOGIN_SERVER }}/waqqly:latest
-          context: ./Waqq.Ly  # Build context set to Waqq.Ly directory
