@@ -93,6 +93,7 @@ namespace Waqq.Ly.Pages
                 if (response.IsSuccessStatusCode)
                 {
                     string data = response.Content.ReadAsStringAsync().Result;
+                    data = data.Replace("$", "\n");
                     ViewData["Walkers"] = data;
                 }
             }

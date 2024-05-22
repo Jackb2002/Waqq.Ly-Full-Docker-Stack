@@ -39,7 +39,7 @@ namespace WaqqAPI.Controllers
                 StringBuilder sb = new StringBuilder();
                 foreach (var walker in ValidWalkers)
                 {
-                    sb.AppendLine(walker);
+                    sb.AppendLine(walker + "$");
                 }
                 _logger.LogInformation("Found walkers at " + location);
                 return Ok(sb.ToString());
